@@ -18,11 +18,12 @@ To run this project locally:
 1. Clone the repository:
 
     ```
-    git clone 
+    git clone https://github.com/bb3-user/IT6780Repo.git
     ```
 2. Navigate to the project directory:
 
     ```
+    cd IT6780Repo
     cd recipe-hub
     ```
 3. Install dependencies:
