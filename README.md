@@ -36,7 +36,7 @@ To run this project locally:
     ```
     python app.py
     ```
-5. The application will be running on `http://localhost:3000`.
+5. The application will be running on `http://localhost:5000`.
 
 ## Usage
 
