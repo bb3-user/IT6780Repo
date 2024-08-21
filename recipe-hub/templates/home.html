@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome to The Recipe Hub{% endblock %}
+
+{% block content %}
+    <h1 style="font-size: 48px;">{{ title }}</h1>
+    <h2 style="font-size: 36px;">B Babbel - August 22, 2024</h2>
+
+    {% if 'logged_in' not in session %}
+        <p style="font-size: 24px;"><a href="{{ url_for('signup') }}">Sign Up</a> | <a href="{{ url_for('login') }}">Log In</a></p>
+    {% else %}
+        <p style="font-size: 24px;">Welcome, {{ session['username'] }}! <a href="{{ url_for('logout') }}">Log Out</a></p>
+    {% endif %}
+
+    <a href="{{ url_for('recipes_blog') }}" style="font-size: 24px; margin-bottom: 40px; display: inline-block;">Visit the Public Recipes Blog</a>
+    
+    {% if session.get('is_admin') %}
+        <div style="position: absolute; bottom: 33%; width: 100%; text-align: center;">
+            <form action="{{ url_for('update_title') }}" method="post" style="display: inline-block;">
+                <label for="title" style="font-size: 1.5em;">Update Title:</label><br>
+                <input type="text" id="title" name="title" style="font-size: 1.5em; padding: 10px; width: 300px;">
+                <button type="submit" style="font-size: 1.5em; padding: 10px 20px;">Update</button>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}

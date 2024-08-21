@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}{{ recipe.title }}{% endblock %}
+
+{% block content %}
+<div style="display: flex; justify-content: center;">
+    <div style="text-align: left; max-width: 800px; width: 100%;">
+        <h1>{{ recipe.title }}</h1>
+        <p><strong>Posted by:</strong> {{ recipe.username }}</p>
+        <pre style="white-space: pre-wrap;">{{ recipe.content }}</pre>
+
+        <h2>Comments</h2>
+        <ul>
+            {% for comment in comments %}
+                <li><strong>{{ comment.username }}</strong>: {{ comment.comment }}</li>
+            {% endfor %}
+        </ul>
+
+        <form method="POST" action="{{ url_for('view_recipe', recipe_id=request.view_args['recipe_id']) }}">
+            <label for="comment">Add a Comment:</label><br>
+            <textarea id="comment" name="comment" rows="4" cols="50" required></textarea><br><br>
+            <button type="submit">Post Comment</button>
+        </form>
+
+        <a href="{{ url_for('recipes_blog') }}">Back to Blog</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Public Recipes Blog{% endblock %}
+
+{% block content %}
+    <h1 style="font-size: 60px; text-align: center; margin-top: 0; margin-bottom: 40px;">Public Recipes Blog</h1>
+    <ul style="list-style-type: none; padding: 0;">
+        {% for recipe in recipes %}
+            <li>
+                <h2 style="font-size: 30px; margin: 20px 0;">
+                    <a href="{{ url_for('view_recipe', recipe_id=loop.index0) }}" style="color: white; text-decoration: none;">
+                        {{ recipe.title }}
+                    </a>
+                </h2>
+                <p>{{ recipe.content[:100] }}...</p>
+            </li>
+        {% endfor %}
+    </ul>
+
+    {% if session.get('logged_in') %}
+        <a href="{{ url_for('add_recipe') }}">Add a New Recipe</a>
+    {% else %}
+        <p><a href="{{ url_for('login') }}">Login</a> to post a recipe.</p>
+    {% endif %}
+    <a href="{{ url_for('home') }}">Back to Home</a>
+{% endblock %}

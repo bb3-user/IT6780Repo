@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Add a New Recipe{% endblock %}
+
+{% block content %}
+    <h1>Add a New Recipe</h1>
+    <form method="POST" action="{{ url_for('add_recipe') }}">
+        <label for="title">Recipe Title:</label><br>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="content">Recipe Content:</label><br>
+        <textarea id="content" name="content" rows="10" cols="50" required></textarea><br><br>
+
+        <button type="submit">Submit Recipe</button>
+    </form>
+    <a href="{{ url_for('recipes_blog') }}">Back to Blog</a>
+{% endblock %}
